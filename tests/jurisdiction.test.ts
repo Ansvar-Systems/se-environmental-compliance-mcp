@@ -13,7 +13,7 @@ describe('jurisdiction validation', () => {
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = validateJurisdiction('SE');
+    const result = validateJurisdiction('XX');
     expect(result).toEqual({
       valid: false,
       error: {

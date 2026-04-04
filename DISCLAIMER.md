@@ -1,24 +1,30 @@
 # Disclaimer
 
-This MCP server provides agricultural data for informational purposes only.
+This MCP server provides Swedish environmental compliance data for agriculture and land use for informational purposes only.
 
-## Not Professional Advice
+## Not Legal or Professional Advice
 
-The data served by this tool does not constitute professional agricultural, agronomic, or financial advice. Nutrient recommendations, commodity prices, and other data points are based on published UK government and AHDB sources, but individual field conditions vary. Always consult a qualified agronomist or FACTS-qualified advisor before making nutrient management decisions.
+The data served by this tool does not constitute legal advice or professional environmental compliance advice. Nitrate-sensitive area rules, spreading windows, buffer strip requirements, and EIA screening thresholds are based on published Swedish regulatory sources, but site-specific conditions vary. Always consult the relevant Lansstyrelsen (County Administrative Board) or a qualified environmental advisor before making compliance decisions. Non-compliance with environmental regulations under Miljobalken can result in prosecution and remediation orders.
 
 ## Data Sources
 
 All data is sourced from:
 
-- **AHDB RB209 Nutrient Management Guide** -- Crown Copyright, Agriculture and Horticulture Development Board
-- **DEFRA Agricultural Price Indices** -- Crown Copyright, Department for Environment, Food and Rural Affairs
-- **AHDB Market Data** -- Agriculture and Horticulture Development Board
+- **Jordbruksverket** (Swedish Board of Agriculture) -- SJVFS 2004:62, SJVFS 2011:25, manure and fertiliser regulations
+- **Naturvardsverket** (Swedish Environmental Protection Agency) -- NFS regulations, pollution prevention, EIA guidance
+- **Havs- och vattenmyndigheten** (Swedish Agency for Marine and Water Management) -- Water abstraction rules, watercourse protection
+- **Miljobalken (1998:808)** -- Environmental Code, EIA screening thresholds, general rules of consideration
+- **Skogsstyrelsen** (Swedish Forest Agency) -- Forestry-related buffer strip and environmental rules
 
-All data is used under the [Open Government Licence v3](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+Data is derived from Swedish public records under offentlighetsprincipen.
 
 ## Currency
 
-Agricultural data changes. Nutrient recommendations are updated periodically by AHDB. Commodity prices change daily. This tool shows the data available at the time of its last ingestion run. Check `check_data_freshness` for the age of the data.
+Environmental regulations change. Nitrate-sensitive area designations are updated, spreading windows may be adjusted, and new EIA screening thresholds may be introduced. This tool shows the data available at the time of its last ingestion run. Run `check_data_freshness` to see the age of the data.
+
+## Jurisdiction
+
+This server covers Sweden (SE) only. EU-level directives (Nitrates Directive 91/676/EEC, EIA Directive 2011/92/EU) are reflected through their Swedish implementation, not directly.
 
 ## No Warranty
 

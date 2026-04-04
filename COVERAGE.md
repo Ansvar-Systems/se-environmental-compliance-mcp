@@ -2,34 +2,48 @@
 
 ## What Is Included
 
-- **Crop nutrient recommendations** from AHDB RB209 (10th Edition): NPK rates by crop, soil type, SNS index, and previous crop
-- **Soil type classifications**: RB209 soil groups 1-3, texture, drainage class
-- **Commodity prices**: Ex-farm and delivered prices from AHDB Market Data and DEFRA Agricultural Price Indices
-- **Crop profiles**: Typical yields, nutrient offtake values, growth stages for major UK arable crops
+- **Nitrate-sensitive areas (nitratkansliga omraden)** -- Activity-specific rules, closed periods, soil type conditions, maximum application rates per SJVFS 2004:62
+- **Spreading windows** -- Material-specific spreading periods for manure, slurry, and fertiliser by land type and nitrate zone
+- **Storage requirements** -- Minimum storage capacity, construction standards, separation distances, and inspection frequencies for manure, slurry, silage, diesel, and pesticides
+- **Buffer strip rules** -- Minimum widths by watercourse type, activity restrictions, and agri-environment scheme payments
+- **Water abstraction rules** -- Licence thresholds, exemptions, and conditions by source type (surface water, groundwater)
+- **Pollution prevention** -- Hazards, control measures, and regulatory requirements by agricultural activity
+- **EIA screening** -- Project type thresholds (area, capacity), screening requirements, and process descriptions under Miljobalken
+- **Full-text search** -- Tiered FTS5 search across all environmental rule topics
 
 ## Jurisdictions
 
 | Code | Country | Status |
 |------|---------|--------|
-| GB | Great Britain | Supported |
+| SE | Sweden | Supported |
+
+## Data Sources
+
+| Source | Authority | Coverage |
+|--------|-----------|----------|
+| Jordbruksverket (SJVFS) | Swedish Board of Agriculture | Nitrate zones, spreading, storage, buffer strips |
+| Naturvardsverket (NFS) | Swedish EPA | Pollution prevention, EIA screening, general environmental rules |
+| Havs- och vattenmyndigheten | Swedish Marine & Water Authority | Water abstraction, watercourse protection |
+| Miljobalken (1998:808) | Riksdagen | Environmental Code, EIA thresholds, general rules of consideration |
+| Skogsstyrelsen | Swedish Forest Agency | Forestry-related buffer strips and environmental protection |
 
 ## What Is NOT Included
 
-- **Organic farming recommendations** -- RB209 covers conventional only
-- **Scotland-specific advice** -- Scottish SRUC equivalents are not yet ingested
-- **Northern Ireland** -- NI follows separate guidance (CAFRE)
-- **Micronutrient recommendations** -- Only N, P, K, and S are covered
-- **Individual field analysis** -- This is reference data, not a precision farming tool
-- **Lime recommendations** -- Separate RB209 section, not yet ingested
-- **Grassland management** -- Focus is arable crops in v0.1.0
-- **Real-time prices** -- Prices are snapshots from the last ingestion run
+- **County-level variations** -- Some Lansstyrelsen have additional local conditions not captured
+- **Natura 2000 site-specific rules** -- Not included; check with relevant Lansstyrelsen
+- **Industrial emissions (IED)** -- Focus is agricultural activities, not large industrial installations
+- **Waste management permits** -- Not covered beyond farm-level pollution prevention
+- **Climate reporting obligations** -- Greenhouse gas reporting requirements are not included
+- **Forestry-specific rules** -- Only buffer strips near watercourses; full Skogsvardslag coverage is not included
+- **Other Nordic countries** -- Sweden only
 
 ## Known Gaps
 
-1. Commodity price data depends on AHDB/DEFRA publication schedule
-2. FTS5 search quality varies with query phrasing -- use specific crop names for best results
-3. SNS index estimation is not included -- users must provide their own SNS assessment
+1. Nitrate-sensitive area boundaries are simplified to rule-level data, not geographic polygons
+2. Spreading windows may have county-level exceptions not captured in the national rules
+3. EIA screening thresholds cover common agricultural project types but not all Miljobalken annexes
+4. FTS5 search works best with Swedish terms (e.g. "flytgodsel", "nitratkansligt") rather than English equivalents
 
 ## Data Freshness
 
-Run `check_data_freshness` to see when data was last updated. The ingestion pipeline runs on a schedule; manual triggers available via `gh workflow run ingest.yml`.
+Run `check_data_freshness` to see when data was last updated. Staleness threshold is 90 days. Manual refresh: `gh workflow run ingest.yml`.
