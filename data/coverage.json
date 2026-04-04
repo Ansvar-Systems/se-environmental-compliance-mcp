@@ -1,0 +1,22 @@
+{
+  "mcp_name": "Sweden Environmental Compliance MCP",
+  "jurisdiction": "SE",
+  "build_date": "2026-04-04",
+  "tables": {
+    "nitratkansliga_omraden": 15,
+    "storage_requirements": 10,
+    "buffer_strip_rules": 9,
+    "abstraction_rules": 7,
+    "pollution_prevention": 8,
+    "eia_screening": 14
+  },
+  "total_records": 63,
+  "fts_indexed": 63,
+  "sources": [
+    "Jordbruksverket (SJVFS 2004:62, SJVFS 2011:25)",
+    "Naturvardsverket (NFS)",
+    "Havs- och vattenmyndigheten (HaV)",
+    "Miljobalken (1998:808)",
+    "Skogsstyrelsen"
+  ]
+}

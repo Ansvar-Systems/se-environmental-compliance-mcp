@@ -1,8 +1,8 @@
 {
   "name": "@ansvar/se-environmental-compliance-mcp",
-  "mcpName": "io.github.ansvar-systems/uk-crop-nutrients",
+  "mcpName": "io.github.ansvar-systems/se-environmental-compliance",
   "version": "0.1.0",
-  "description": "UK crop nutrient recommendations via MCP -- RB209 data, soil types, NPK planning, commodity prices",
+  "description": "Swedish environmental compliance data via MCP — nitrate-sensitive areas, spreading windows, storage requirements, buffer strips, water abstraction, pollution prevention, EIA screening",
   "type": "module",
   "main": "dist/server.js",
   "bin": {
@@ -25,7 +25,7 @@
     "freshness:check": "tsx scripts/check-freshness.ts",
     "coverage:update": "tsx scripts/update-coverage.ts"
   },
-  "keywords": ["mcp", "agriculture", "nutrients", "rb209", "farming", "crop-science"],
+  "keywords": ["mcp", "agriculture", "environment", "compliance", "sweden", "nitrate", "eia", "pollution"],
   "author": "Ansvar Systems <info@ansvar.eu>",
   "license": "Apache-2.0",
   "repository": {
