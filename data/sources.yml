@@ -1,22 +1,64 @@
 schema_version: "1.0"
-mcp_name: "Sweden Crop Nutrients MCP"
+mcp_name: "Sweden Environmental Compliance MCP"
 category: "domain_intelligence"
 
 sources:
-  # TODO: Add Sweden-specific data sources here.
-  # Example:
-  # - name: "National Agriculture Advisory Service"
-  #   authority: "Ministry of Agriculture"
-  #   official_url: "https://example.gov.se/agriculture"
-  #   retrieval_method: "HTML_SCRAPE"
-  #   format: "HTML"
-  #   authentication: "none"
-  #   update_frequency: "annual"
-  #   license:
-  #     type: "Open Government Licence"
-  #     url: "https://example.gov.se/licence"
-  #   coverage:
-  #     scope: "National agricultural data"
-  #   languages:
-  #     - "se"
-  []
+  - name: "Jordbruksverket (Swedish Board of Agriculture)"
+    authority: "Jordbruksverket"
+    official_url: "https://jordbruksverket.se"
+    retrieval_method: "MANUAL_CURATION"
+    format: "HTML/PDF"
+    authentication: "none"
+    update_frequency: "as_amended"
+    license:
+      type: "Swedish Government Public Domain"
+      url: "https://jordbruksverket.se"
+    coverage:
+      scope: "SJVFS 2004:62 (nitrate rules), SJVFS 2011:25 (manure spreading), storage requirements"
+    languages:
+      - "sv"
+
+  - name: "Naturvardsverket (Swedish EPA)"
+    authority: "Naturvardsverket"
+    official_url: "https://www.naturvardsverket.se"
+    retrieval_method: "MANUAL_CURATION"
+    format: "HTML/PDF"
+    authentication: "none"
+    update_frequency: "as_amended"
+    license:
+      type: "Swedish Government Public Domain"
+      url: "https://www.naturvardsverket.se"
+    coverage:
+      scope: "NFS regulations, EIA screening thresholds, pollution prevention"
+    languages:
+      - "sv"
+
+  - name: "Havs- och vattenmyndigheten (HaV)"
+    authority: "Havs- och vattenmyndigheten"
+    official_url: "https://www.havochvatten.se"
+    retrieval_method: "MANUAL_CURATION"
+    format: "HTML/PDF"
+    authentication: "none"
+    update_frequency: "as_amended"
+    license:
+      type: "Swedish Government Public Domain"
+      url: "https://www.havochvatten.se"
+    coverage:
+      scope: "Water abstraction rules, vattenverksamhet permits, buffer strip guidance"
+    languages:
+      - "sv"
+
+  - name: "Miljobalken (1998:808)"
+    authority: "Swedish Government"
+    official_url: "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/miljobalk-1998808_sfs-1998-808/"
+    retrieval_method: "MANUAL_CURATION"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "as_amended"
+    license:
+      type: "Swedish Government Public Domain"
+      url: "https://www.riksdagen.se"
+    coverage:
+      scope: "Environmental Code: general environmental obligations, permitting, enforcement"
+    languages:
+      - "sv"

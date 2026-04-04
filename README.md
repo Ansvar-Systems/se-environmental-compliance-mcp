@@ -1,27 +1,17 @@
-# Sweden Crop Nutrients MCP
+# Sweden Environmental Compliance MCP
 
-[![CI](https://github.com/ansvar-systems/se-environmental-compliance-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/ansvar-systems/se-environmental-compliance-mcp/actions/workflows/ci.yml)
-[![GHCR](https://github.com/ansvar-systems/se-environmental-compliance-mcp/actions/workflows/ghcr-build.yml/badge.svg)](https://github.com/ansvar-systems/se-environmental-compliance-mcp/actions/workflows/ghcr-build.yml)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+Swedish environmental compliance data for agriculture and land use. Query Swedish environmental regulations through the [Model Context Protocol](https://modelcontextprotocol.io).
 
-UK crop nutrient recommendations via the [Model Context Protocol](https://modelcontextprotocol.io). Query AHDB RB209 data, soil types, NPK planning, and commodity prices -- all from your AI assistant.
-
-Part of [Ansvar Open Agriculture](https://ansvar.eu/open-agriculture).
-
-## Why This Exists
-
-Farmers and agronomists need quick access to nutrient recommendation tables, commodity prices, and soil data. This information is published by AHDB and DEFRA but is locked in PDFs, spreadsheets, and web pages that AI assistants cannot query directly. This MCP server makes it all searchable.
+> **Data sources:** Jordbruksverket (SJVFS), Naturvardsverket (NFS), Havs- och vattenmyndigheten (HaV), Miljobalken (1998:808). Licensed under applicable Swedish open data terms.
 
 ## Quick Start
 
-### Claude Desktop
-
-Add to `claude_desktop_config.json`:
+### Claude Desktop / Claude Code
 
 ```json
 {
   "mcpServers": {
-    "uk-crop-nutrients": {
+    "se-environmental-compliance": {
       "command": "npx",
       "args": ["-y", "@ansvar/se-environmental-compliance-mcp"]
     }
@@ -29,87 +19,46 @@ Add to `claude_desktop_config.json`:
 }
 ```
 
-### Claude Code
-
-```bash
-claude mcp add uk-crop-nutrients npx @ansvar/se-environmental-compliance-mcp
-```
-
-### Streamable HTTP (remote)
+### Streamable HTTP (Docker)
 
 ```
-https://mcp.ansvar.eu/se-crop-nutrients/mcp
+https://mcp.ansvar.eu/se-environmental-compliance/mcp
 ```
-
-### Docker (self-hosted)
-
-```bash
-docker run -p 3000:3000 ghcr.io/ansvar-systems/se-environmental-compliance-mcp:latest
-```
-
-### npm (stdio)
-
-```bash
-npx @ansvar/se-environmental-compliance-mcp
-```
-
-## Example Queries
-
-Ask your AI assistant:
-
-- "What NPK does winter wheat need on heavy clay soil?"
-- "What's the current price of spring barley?"
-- "Calculate gross margin for 8.5 t/ha winter wheat at 520/ha input costs"
-- "What soil group is sandy loam in RB209?"
-- "Search for nitrogen recommendations for oilseed rape"
-
-## Stats
-
-| Metric | Value |
-|--------|-------|
-| Tools | 10 (3 meta + 7 domain) |
-| Jurisdiction | GB |
-| Data sources | AHDB RB209, DEFRA Price Indices, AHDB Market Data |
-| License (data) | Open Government Licence v3 |
-| License (code) | Apache-2.0 |
-| Transport | stdio + Streamable HTTP |
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `about` | Server metadata and links |
-| `list_sources` | Data sources with freshness info |
-| `check_data_freshness` | Staleness status and refresh command |
-| `search_crop_requirements` | FTS5 search across crop and nutrient data |
-| `get_nutrient_plan` | NPK recommendation for crop + soil type |
-| `get_soil_classification` | Soil group and characteristics |
-| `list_crops` | All crops, optionally by group |
-| `get_crop_details` | Full crop profile with nutrient offtake |
-| `get_commodity_price` | Latest price with source attribution |
-| `calculate_margin` | Gross margin estimate |
+| `about` | Get server metadata: name, version, coverage, data sources, and links. |
+| `list_sources` | List all data sources with authority, URL, license, and freshness info. |
+| `check_data_freshness` | Check when data was last ingested, staleness status, and how to trigger a refresh. |
+| `check_nitratkansligt_omrade` | Check rules for nitratkansliga omraden (nitrate-sensitive areas) under the EU Nitrates Directive. |
+| `get_spreading_windows` | Get allowed spreading periods for manure and fertiliser based on type and land use. |
+| `get_storage_requirements` | Get storage requirements for agricultural materials (manure, silage, fuel, pesticides). |
+| `check_buffer_strip_rules` | Check buffer strip and protection zone rules near watercourses. |
+| `get_abstraction_rules` | Get water abstraction and vattenverksamhet rules for surface water and groundwater. |
+| `search_environmental_rules` | Full-text search across all Swedish environmental compliance data. |
+| `get_pollution_prevention` | Get pollution prevention requirements for agricultural and land-use activities. |
+| `get_eia_screening` | Check environmental impact assessment (MKB) screening thresholds for projects. |
 
-See [TOOLS.md](TOOLS.md) for full parameter documentation.
+## Example Queries
 
-## Security Scanning
+- "Vilka regler galler for nitratkansliga omraden i Sverige?" (What rules apply to nitrate-sensitive areas in Sweden?)
+- "When can I spread manure on arable land in southern Sweden?"
+- "Hur bred ska en skyddszon vara vid ett vattendrag?" (How wide should a buffer strip be near a watercourse?)
+- "Do I need an EIA for a 500-head cattle unit?"
 
-This repository runs 6 security checks on every push:
+## Stats
 
-- **CodeQL** -- static analysis for JavaScript/TypeScript
-- **Gitleaks** -- secret detection across full history
-- **Dependency review** -- via Dependabot
-- **Container scanning** -- via GHCR build pipeline
+| Metric | Value |
+|--------|-------|
+| Jurisdiction | SE (Sweden) |
+| Tools | 11 |
+| Transport | stdio + Streamable HTTP |
+| License | Apache-2.0 |
 
-See [SECURITY.md](SECURITY.md) for reporting policy.
+## Links
 
-## Disclaimer
-
-This tool provides reference data for informational purposes only. It is not professional agricultural advice. See [DISCLAIMER.md](DISCLAIMER.md).
-
-## Contributing
-
-Issues and pull requests welcome. For security vulnerabilities, email security@ansvar.eu (do not open a public issue).
-
-## License
-
-Apache-2.0. Data sourced under Open Government Licence v3.
+- [Ansvar MCP Network](https://ansvar.eu/open-agriculture)
+- [GitHub](https://github.com/ansvar-systems/se-environmental-compliance-mcp)
+- [All Swedish Agriculture MCPs](https://mcp.ansvar.eu)
