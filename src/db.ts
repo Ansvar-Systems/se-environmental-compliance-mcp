@@ -107,6 +107,85 @@ function initSchema(db: BetterSqlite3.Database): void {
       jurisdiction TEXT NOT NULL DEFAULT 'SE'
     );
 
+    CREATE TABLE IF NOT EXISTS designated_nvz (
+      id INTEGER PRIMARY KEY,
+      lan TEXT NOT NULL,
+      coverage TEXT NOT NULL,
+      category TEXT,
+      notes TEXT,
+      regulation_ref TEXT,
+      jurisdiction TEXT NOT NULL DEFAULT 'SE'
+    );
+
+    CREATE TABLE IF NOT EXISTS animal_unit_definitions (
+      id INTEGER PRIMARY KEY,
+      species TEXT NOT NULL,
+      count_per_unit INTEGER NOT NULL,
+      notes TEXT,
+      regulation_ref TEXT,
+      jurisdiction TEXT NOT NULL DEFAULT 'SE'
+    );
+
+    CREATE TABLE IF NOT EXISTS verksamhetskoder (
+      id INTEGER PRIMARY KEY,
+      code TEXT NOT NULL,
+      classification TEXT NOT NULL,
+      activity TEXT NOT NULL,
+      threshold TEXT,
+      species_scope TEXT,
+      process TEXT,
+      regulation_ref TEXT,
+      jurisdiction TEXT NOT NULL DEFAULT 'SE'
+    );
+
+    CREATE TABLE IF NOT EXISTS cistern_rules (
+      id INTEGER PRIMARY KEY,
+      tank_type TEXT NOT NULL,
+      volume_threshold TEXT,
+      location_context TEXT,
+      inspection_type TEXT,
+      inspection_frequency TEXT,
+      secondary_containment TEXT,
+      notification_required INTEGER,
+      conditions TEXT,
+      regulation_ref TEXT,
+      jurisdiction TEXT NOT NULL DEFAULT 'SE'
+    );
+
+    CREATE TABLE IF NOT EXISTS pesticide_buffer_zones (
+      id INTEGER PRIMARY KEY,
+      watercourse_type TEXT NOT NULL,
+      fixed_distance_m REAL,
+      adapted_distance_m REAL,
+      product_class TEXT,
+      conditions TEXT,
+      regulation_ref TEXT,
+      jurisdiction TEXT NOT NULL DEFAULT 'SE'
+    );
+
+    CREATE TABLE IF NOT EXISTS vattenverksamhet (
+      id INTEGER PRIMARY KEY,
+      activity_type TEXT NOT NULL,
+      threshold TEXT,
+      permit_type TEXT NOT NULL,
+      authority TEXT,
+      exemptions TEXT,
+      conditions TEXT,
+      regulation_ref TEXT,
+      jurisdiction TEXT NOT NULL DEFAULT 'SE'
+    );
+
+    CREATE TABLE IF NOT EXISTS autumn_cover_requirements (
+      id INTEGER PRIMARY KEY,
+      region TEXT NOT NULL,
+      min_cover_pct REAL,
+      crop_types TEXT,
+      area_threshold_ha REAL,
+      conditions TEXT,
+      regulation_ref TEXT,
+      jurisdiction TEXT NOT NULL DEFAULT 'SE'
+    );
+
     CREATE VIRTUAL TABLE IF NOT EXISTS search_index USING fts5(
       title, body, topic, jurisdiction
     );
@@ -116,7 +195,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       value TEXT
     );
 
-    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('schema_version', '1.0');
+    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('schema_version', '2.0');
     INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('mcp_name', 'Sweden Environmental Compliance MCP');
     INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('jurisdiction', 'SE');
   `);

@@ -3,27 +3,39 @@
   "jurisdiction": "SE",
   "build_date": "2026-04-04",
   "tables": {
-    "nitratkansliga_omraden": 27,
-    "storage_requirements": 18,
-    "buffer_strip_rules": 17,
-    "abstraction_rules": 14,
+    "nitratkansliga_omraden": 32,
+    "storage_requirements": 24,
+    "buffer_strip_rules": 18,
+    "abstraction_rules": 18,
     "pollution_prevention": 15,
-    "eia_screening": 23
+    "eia_screening": 25,
+    "designated_nvz": 27,
+    "animal_unit_definitions": 15,
+    "verksamhetskoder": 10,
+    "cistern_rules": 6,
+    "pesticide_buffer_zones": 7,
+    "vattenverksamhet": 10,
+    "autumn_cover_requirements": 5
   },
-  "total_records": 114,
-  "fts_indexed": 114,
+  "total_records": 212,
+  "fts_indexed": 212,
   "sources": [
     "Jordbruksverket (SJVFS 2004:62, SJVFS 2011:25, SJVFS 2020:2, SJVFS 2026:2)",
     "Naturvardsverket (NFS 2015:2, NFS 2021:10)",
     "Havs- och vattenmyndigheten (HaV, HVMFS 2015:34)",
-    "Kemikalieinspektionen (KIFS 2008:3)",
+    "Kemikalieinspektionen (KIFS 2022:3)",
     "Miljobalken (1998:808)",
+    "Forordning (1998:899) om miljofarlig verksamhet och halsoskydd",
+    "Forordning (1998:915) om miljohansyn i jordbruket",
     "Miljoprovningsforordningen (2013:251)",
     "Forordning (1998:1388) om vattenverksamheter",
     "Skogsstyrelsen (Skogsvardslag 1979:429)",
     "MSB (MSBFS 2018:3)",
+    "SFS 2014:425 (vaxtskyddsmedelsforordningen)",
     "EU Nitratdirektivet (91/676/EEG)",
     "EU Ramdirektivet for vatten (2000/60/EG)",
-    "EU ABP-forordningen (EG 1069/2009)"
+    "EU ABP-forordningen (EG 1069/2009)",
+    "EU NEC-direktivet (2016/2284)",
+    "Sevesodirektivet (2012/18/EU)"
   ]
 }

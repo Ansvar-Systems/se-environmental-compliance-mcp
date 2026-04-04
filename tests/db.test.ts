@@ -21,7 +21,7 @@ describe('database layer', () => {
       'SELECT value FROM db_metadata WHERE key = ?',
       ['schema_version']
     );
-    expect(row?.value).toBe('1.0');
+    expect(row?.value).toBe('2.0');
   });
 
   test('FTS5 search_index exists', () => {

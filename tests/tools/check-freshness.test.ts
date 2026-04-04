@@ -47,6 +47,6 @@ describe('check_data_freshness tool', () => {
 
   test('includes schema_version', () => {
     const result = handleCheckFreshness(db);
-    expect(result.schema_version).toBe('1.0');
+    expect(result.schema_version).toBe('2.0');
   });
 });
