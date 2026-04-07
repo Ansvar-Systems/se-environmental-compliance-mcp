@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 import { buildMeta } from '../metadata.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
@@ -32,6 +33,7 @@ export function handleGetStorageRequirements(db: Database, args: StorageArgs) {
       results_count: 0,
       message: `No storage requirements found for '${args.material}'. ` +
         'Try "flytgodsel", "fastgodsel", "ensilage", "diesel", or "bekampningsmedel".',
+      _citation: buildCitation(`SE storage requirements — ${args.material ?? ''}`, `storage requirements (${args.material ?? ''})`, 'get_storage_requirements', { material: String(args.material ?? '') }, 'https://jordbruksverket.se/lagar-och-regler'),
       _meta: buildMeta({ source_url: 'https://jordbruksverket.se/lagar-och-regler' }),
     };
   }
@@ -50,6 +52,7 @@ export function handleGetStorageRequirements(db: Database, args: StorageArgs) {
     jurisdiction: jv.jurisdiction,
     results_count: requirements.length,
     requirements,
+    _citation: buildCitation(`SE storage requirements — ${args.material ?? ''}`, `storage requirements (${args.material ?? ''})`, 'get_storage_requirements', { material: String(args.material ?? '') }, 'https://jordbruksverket.se/lagar-och-regler'),
     _meta: buildMeta({ source_url: 'https://jordbruksverket.se/lagar-och-regler' }),
   };
 }

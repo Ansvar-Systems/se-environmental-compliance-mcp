@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 import { buildMeta } from '../metadata.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
@@ -68,6 +69,7 @@ export function handleGetSpreadingWindows(db: Database, args: SpreadingArgs) {
       results_count: 0,
       message: `No spreading window data found for manure type '${args.manure_type}' on '${args.land_type}'. ` +
         'Try "stallgodsel", "flytgodsel", "handelsgodsel", or "urea".',
+      _citation: buildCitation(`SE spreading windows — ${args.manure_type ?? ''}`, `spreading windows (${args.manure_type ?? ''})`, 'get_spreading_windows', { manure_type: String(args.manure_type ?? '') }, 'https://jordbruksverket.se/lagar-och-regler'),
       _meta: buildMeta({ source_url: 'https://jordbruksverket.se/lagar-och-regler' }),
     };
   }
@@ -78,6 +80,7 @@ export function handleGetSpreadingWindows(db: Database, args: SpreadingArgs) {
     nitratkansligt_note: nitratkansligtNote,
     results_count: windows.length,
     spreading_windows: windows,
+    _citation: buildCitation(`SE spreading windows — ${args.manure_type ?? ''}`, `spreading windows (${args.manure_type ?? ''})`, 'get_spreading_windows', { manure_type: String(args.manure_type ?? '') }, 'https://jordbruksverket.se/lagar-och-regler'),
     _meta: buildMeta({ source_url: 'https://jordbruksverket.se/lagar-och-regler' }),
   };
 }

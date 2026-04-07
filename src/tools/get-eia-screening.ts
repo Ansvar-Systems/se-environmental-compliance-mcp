@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 import { buildMeta } from '../metadata.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
@@ -31,6 +32,7 @@ export function handleGetEiaScreening(db: Database, args: EiaArgs) {
       results_count: 0,
       message: `No EIA screening rules found for project type '${args.project_type}'. ` +
         'Try "djurhallning", "uppodling", "dikning", "avverkning", "vindkraft", or "takt".',
+      _citation: buildCitation(`SE eia screening — ${args.project_type ?? ''}`, `eia screening (${args.project_type ?? ''})`, 'get_eia_screening', { project_type: String(args.project_type ?? '') }, 'https://www.naturvardsverket.se/lagar-och-regler/'),
       _meta: buildMeta({ source_url: 'https://www.naturvardsverket.se/lagar-och-regler/' }),
     };
   }
@@ -58,6 +60,7 @@ export function handleGetEiaScreening(db: Database, args: EiaArgs) {
     jurisdiction: jv.jurisdiction,
     results_count: screenings.length,
     screenings,
+    _citation: buildCitation(`SE eia screening — ${args.project_type ?? ''}`, `eia screening (${args.project_type ?? ''})`, 'get_eia_screening', { project_type: String(args.project_type ?? '') }, 'https://www.naturvardsverket.se/lagar-och-regler/'),
     _meta: buildMeta({ source_url: 'https://www.naturvardsverket.se/lagar-och-regler/' }),
   };
 }

@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 import { buildMeta } from '../metadata.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
@@ -30,6 +31,7 @@ export function handleGetPollutionPrevention(db: Database, args: PollutionArgs) 
       results_count: 0,
       message: `No pollution prevention rules found for activity '${args.activity}'. ` +
         'Try "flytgodsel", "ensilage", "diesel", "bekampningsmedel", "kadaver", or "veterinaravfall".',
+      _citation: buildCitation(`SE pollution prevention — ${args.activity ?? ''}`, `pollution prevention (${args.activity ?? ''})`, 'get_pollution_prevention', { activity: String(args.activity ?? '') }, 'https://www.naturvardsverket.se/lagar-och-regler/'),
       _meta: buildMeta({ source_url: 'https://www.naturvardsverket.se/lagar-och-regler/' }),
     };
   }
@@ -47,6 +49,7 @@ export function handleGetPollutionPrevention(db: Database, args: PollutionArgs) 
     jurisdiction: jv.jurisdiction,
     results_count: measures.length,
     measures,
+    _citation: buildCitation(`SE pollution prevention — ${args.activity ?? ''}`, `pollution prevention (${args.activity ?? ''})`, 'get_pollution_prevention', { activity: String(args.activity ?? '') }, 'https://www.naturvardsverket.se/lagar-och-regler/'),
     _meta: buildMeta({ source_url: 'https://www.naturvardsverket.se/lagar-och-regler/' }),
   };
 }
