@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 import { buildMeta } from '../metadata.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
@@ -55,6 +56,7 @@ export function handleGetAbstractionRules(db: Database, args: AbstractionArgs) {
       results_count: 0,
       message: 'No water abstraction rules found. ' +
         'Try source_type "ytvatten", "grundvatten", or "vattenverksamhet".',
+      _citation: buildCitation(`SE abstraction rules — ${args.source_type ?? ''}`, `abstraction rules (${args.source_type ?? ''})`, 'get_abstraction_rules', { source_type: String(args.source_type ?? '') }, 'https://www.havochvatten.se/regelverk.html'),
       _meta: buildMeta({ source_url: 'https://www.havochvatten.se/regelverk.html' }),
     };
   }
@@ -64,6 +66,7 @@ export function handleGetAbstractionRules(db: Database, args: AbstractionArgs) {
     jurisdiction: jv.jurisdiction,
     results_count: enriched.length,
     rules: enriched,
+    _citation: buildCitation(`SE abstraction rules — ${args.source_type ?? ''}`, `abstraction rules (${args.source_type ?? ''})`, 'get_abstraction_rules', { source_type: String(args.source_type ?? '') }, 'https://www.havochvatten.se/regelverk.html'),
     _meta: buildMeta({ source_url: 'https://www.havochvatten.se/regelverk.html' }),
   };
 }
